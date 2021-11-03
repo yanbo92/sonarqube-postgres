@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+  sonarqube:
+    image: sonar_plugins:v3
+    expose:
+      - 9000
+    ports:
+      - "9000:9000"
+    networks:
+      - sonarnet
+    environment:
+      - sonar.jdbc.url=jdbc:postgresql://db:5432/sonar
+      - sonar.jdbc.username=sonar
+      - sonar.jdbc.password=sonar
+
+
+  db:
+    image: postgres
+    networks:
+      - sonarnet
+    environment:
+      - POSTGRES_USER=sonar
+      - POSTGRES_PASSWORD=sonar
+
+networks:
+  sonarnet:
+
+
