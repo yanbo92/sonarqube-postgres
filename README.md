@@ -35,13 +35,14 @@ touch Dockerfile && touch docker-compose-yml
 Dockerfile文件内容：
 
 ```dockerfile
-FROM sonarqube:8.9-community
+FROM mc1arke/sonarqube-with-community-branch-plugin:8.9-community
 RUN wget -P /opt/sonarqube/extensions/plugins/ https://github.com/xuhuisheng/sonar-l10n-zh/releases/download/sonar-l10n-zh-plugin-8.9/sonar-l10n-zh-plugin-8.9.jar
 RUN wget -P /opt/sonarqube/extensions/plugins/ https://github.com/tal-tech/sonar-swift/releases/download/1.5.1/tal-sonar-swift-plugin-1.5.1.jar
 RUN wget -P /opt/sonarqube/extensions/plugins/ https://github.com/detekt/sonar-kotlin/releases/download/2.3.0/sonar-detekt-2.3.0.jar
+RUN wget -P /opt/sonarqube/extensions/plugins/ https://github.com/SonarOpenCommunity/sonar-cxx/releases/download/cxx-2.0.5/sonar-cxx-plugin-2.0.5.2867.jar
 ```
 
-使用最新版本的Sonar Community版，安装中文插件、swift插件以及kotlin插件。此处使用最粗暴的下载、拷贝jar文件的安装方法。通过挂载存储也可以实现相同的功能。
+使用8.9版本的Sonar Community Branch插件版镜像，安装中文插件、swift插件以及kotlin插件。此处使用最粗暴的下载、拷贝jar文件的安装方法。通过挂载存储也可以实现相同的功能。
 
 
 
